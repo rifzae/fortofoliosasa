@@ -7,12 +7,12 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Fungsi untuk scroll ke bagian tertentu dengan halus dan offset yang pas
+  // Fungsi navigasi yang sudah dioptimalkan agar "bisa dipencet" dengan lancar
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100; // Jarak aman dari atas agar tidak tertutup nav
+      const offset = 90; // Jarak agar judul tidak tertutup menu
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -33,7 +33,6 @@ const App: React.FC = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Deteksi apakah section sedang berada di area pandang utama
           return rect.top >= -300 && rect.top <= 300;
         }
         return false;
@@ -53,7 +52,7 @@ const App: React.FC = () => {
       <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
 
-      {/* Navigasi Modern (Sudah Diperbaiki agar Bisa Diklik) */}
+      {/* Navigasi Utama */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[60] w-[95%] max-w-fit">
         <div className="glass px-3 py-2 md:px-6 md:py-3 rounded-full flex items-center justify-center gap-2 md:gap-4 shadow-2xl border border-white/20 backdrop-blur-xl">
           {['home', 'about', 'skills', 'experience', 'documentation'].map((item) => (
@@ -61,9 +60,9 @@ const App: React.FC = () => {
               key={item}
               href={`#${item}`}
               onClick={(e) => scrollToSection(e, item)}
-              className={`text-[10px] md:text-sm font-bold uppercase tracking-wider transition-all duration-300 py-2 px-3 md:px-4 rounded-full whitespace-nowrap ${
+              className={`text-[10px] md:text-sm font-bold uppercase tracking-wider transition-all duration-300 py-2 px-3 md:px-5 rounded-full whitespace-nowrap ${
                 activeSection === item 
-                  ? 'text-blue-400 bg-blue-500/20 shadow-inner' 
+                  ? 'text-blue-400 bg-blue-500/20 shadow-inner scale-105' 
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -78,7 +77,7 @@ const App: React.FC = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 pt-20 text-center">
-        <div className="relative group mb-8">
+        <div className="relative group mb-8 scale-90 md:scale-100">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
           <img 
             src={PORTFOLIO_DATA.profilePic} 
@@ -118,7 +117,7 @@ const App: React.FC = () => {
               <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
               Profil Singkat
             </h2>
-            <p className="text-gray-400 leading-relaxed text-lg italic bg-white/5 p-6 rounded-2xl border border-white/5">
+            <p className="text-gray-400 leading-relaxed text-lg italic bg-white/5 p-6 rounded-3xl border border-white/5 shadow-inner">
               "{PORTFOLIO_DATA.about}"
             </p>
           </div>
@@ -129,9 +128,9 @@ const App: React.FC = () => {
               Pendidikan
             </h2>
             {PORTFOLIO_DATA.education.map((edu, idx) => (
-              <div key={idx} className="glass p-6 rounded-3xl border border-white/10 hover:border-purple-500/30 transition-all">
+              <div key={idx} className="glass p-6 rounded-3xl border border-white/10 hover:border-purple-500/30 transition-all group">
                 <span className="text-xs text-blue-400 font-bold mb-1 block uppercase tracking-widest">{edu.period}</span>
-                <h3 className="text-xl font-bold text-white mb-1">{edu.degree}</h3>
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">{edu.degree}</h3>
                 <p className="text-gray-400 text-sm mb-3 font-medium">{edu.institution}</p>
                 <p className="text-gray-500 text-sm leading-relaxed">{edu.description}</p>
               </div>
@@ -170,7 +169,6 @@ const App: React.FC = () => {
       {/* Pengalaman Section */}
       <section id="experience" className="py-24 px-4 max-w-4xl mx-auto">
         <h2 className="text-4xl font-extrabold mb-16 text-center">Pengalaman Kerja</h2>
-        
         <div className="space-y-12 relative border-l-2 border-white/10 ml-4 md:ml-0">
           {PORTFOLIO_DATA.experience.map((exp, i) => (
             <div key={i} className="relative pl-8 md:pl-12 group">
@@ -205,7 +203,6 @@ const App: React.FC = () => {
             <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
             <p className="text-gray-500">Klik pada foto untuk memperbesar tampilan</p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PORTFOLIO_DATA.documentation.map((img, i) => (
               <div 
@@ -248,7 +245,7 @@ const App: React.FC = () => {
       <footer className="py-20 px-4 text-center border-t border-white/5 bg-black/20">
         <p className="text-gray-500 mb-6">Membangun masa depan ritel yang lebih baik.</p>
         <div className="flex justify-center gap-4 mb-10">
-           <a href={whatsappUrl} className="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-500 transition-all shadow-lg flex items-center gap-2">
+           <a href={whatsappUrl} className="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-500 transition-all shadow-lg flex items-center gap-2 transform hover:scale-105 active:scale-95">
              <Icon name="MessageCircle" /> WhatsApp
            </a>
         </div>
