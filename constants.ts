@@ -7,9 +7,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
   profilePic: "/img/sasa.jpg",
   about: "Halo! Saya adalah seorang mahasiswa aktif Manajemen Ritel di Institut Teknologi dan Bisnis Tuban. Saya memiliki minat besar dalam manajemen operasional, strategi pemasaran ritel, dan pengembangan bisnis. Melalui pengalaman praktis di bidang operasional ritel dan sebagai host live shopping, saya telah mengasah kemampuan komunikasi, manajemen waktu, dan kepemimpinan untuk memberikan dampak positif bagi organisasi.",
   socials: [
-    { platform: "Instagram", url: "https://instagram.com", icon: "Instagram" },
-    { platform: "Email", url: "mailto:diyana@example.com", icon: "Mail" },
-    { platform: "WhatsApp", url: "https://wa.me/628123456789", icon: "MessageCircle" }
+    { platform: "Instagram", url: "https://www.instagram.com/sasa_bcd?igsh=NXpiZmw0c3RjOXh6&utm_source=qr", icon: "Instagram" },
+    { platform: "Email", url: "sasabcd491@gmail.com", icon: "Mail" },
+    { platform: "WhatsApp", url: "https://wa.me/6285803038462", icon: "MessageCircle" }
   ],
   education: [
     {
