@@ -7,12 +7,11 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Fungsi navigasi yang sudah dioptimalkan agar "bisa dipencet" dengan lancar
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 90; // Jarak agar judul tidak tertutup menu
+      const offset = 90;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -48,11 +47,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen relative selection:bg-blue-500/30">
-      {/* Background Decor */}
       <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
       <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
 
-      {/* Navigasi Utama */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[60] w-[95%] max-w-fit">
         <div className="glass px-3 py-2 md:px-6 md:py-3 rounded-full flex items-center justify-center gap-2 md:gap-4 shadow-2xl border border-white/20 backdrop-blur-xl">
           {['home', 'about', 'skills', 'experience', 'documentation'].map((item) => (
@@ -75,7 +72,6 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 pt-20 text-center">
         <div className="relative group mb-8 scale-90 md:scale-100">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-70 transition duration-1000"></div>
@@ -109,7 +105,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Profil Section */}
       <section id="about" className="py-24 px-4 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
@@ -139,7 +134,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Keahlian Section */}
       <section id="skills" className="py-24 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -166,7 +160,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Pengalaman Section */}
       <section id="experience" className="py-24 px-4 max-w-4xl mx-auto">
         <h2 className="text-4xl font-extrabold mb-16 text-center">Pengalaman Kerja</h2>
         <div className="space-y-12 relative border-l-2 border-white/10 ml-4 md:ml-0">
@@ -195,7 +188,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Dokumentasi Section */}
       {PORTFOLIO_DATA.documentation && PORTFOLIO_DATA.documentation.length > 0 && (
         <section id="documentation" className="py-24 px-4 max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -224,10 +216,9 @@ const App: React.FC = () => {
         </section>
       )}
 
-      {/* Lightbox Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-xl"
           onClick={() => setSelectedImage(null)}
         >
           <button className="absolute top-8 right-8 text-white/70 hover:text-white transition-colors">
@@ -241,7 +232,6 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Footer */}
       <footer className="py-20 px-4 text-center border-t border-white/5 bg-black/20">
         <p className="text-gray-500 mb-6">Membangun masa depan ritel yang lebih baik.</p>
         <div className="flex justify-center gap-4 mb-10">
@@ -254,7 +244,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Tombol WhatsApp Melayang */}
       <a 
         href={whatsappUrl}
         target="_blank"
