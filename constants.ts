@@ -4,7 +4,7 @@ import { PortfolioData } from './types';
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Diyana Ma'rifatul Chasanah",
   title: "Profesional Manajemen Ritel & Operasional Bisnis",
-  profilePic: "public/img/sasa.jpg",
+  profilePic: "/img/sasa.jpg",
   about: "Halo! Saya adalah seorang mahasiswa aktif Manajemen Ritel di Institut Teknologi dan Bisnis Tuban. Saya memiliki minat besar dalam manajemen operasional, strategi pemasaran ritel, dan pengembangan bisnis. Melalui pengalaman praktis di bidang operasional ritel dan sebagai host live shopping, saya telah mengasah kemampuan komunikasi, manajemen waktu, dan kepemimpinan untuk memberikan dampak positif bagi organisasi.",
   socials: [
     { platform: "Instagram", url: "https://instagram.com", icon: "Instagram" },
