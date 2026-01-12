@@ -53,8 +53,8 @@ export const PORTFOLIO_DATA: PortfolioData = {
     }
   ],
   documentation: [
-    "acces/img/sasa4.jpeg",
-    "acces/img/sasa3.jpeg",
-    "acces/img/sasa2.jpeg"
+    "/img/sasa4.jpg",
+    "/img/sasa3.jpg",
+    "/img/sasa2.jpg"
   ]
 };
